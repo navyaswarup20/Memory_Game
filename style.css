@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    /*There are two type of boxes-content box, in this border and padding is above and second is border-box in this border and padding 
+    is inside the box...
+    In content-box, border and padding is not included*/
+    box-sizing: border-box;
+}
+body{
+    height: 100 vh ;
+    display: flex;
+    background-color: rgb(39, 35, 35);
+     /*view port height, it will take 100% size space*/
+}
+.memory-game{
+    width: 640px;
+    height: 640px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap ;
+   padding-top: 9%; 
+   /* give depth to our element to a memory game container   */
+   perspective: 1000px ;
+     /* no-wrap and is preventing from being
+    laid out accross multiple rows */
+
+    /* flex: whe we apply flex to container, it give other properties also
+    by default,
+    Properties are:
+    1. each block take same amount of space in the screen
+    2. items shoule be layed down in a row, from left to right
+    */
+}
+.memory-card{
+        margin: 5px;
+        width: calc(25% - 10px);
+        position: relative;
+        height: calc(33.333% - 10px);
+        transform: scale(1);
+        /* for 3d effect   */
+        transform-style: preserve-3d ;
+        transition: transform .5s ;
+    }
+.memory-card:active{
+    transform: scale(0.97);
+    transition: transform .2s;
+}
+/*flip class by toggle */
+.memory-card.flip{
+transform: rotateY(180deg);
+}
+
+ .front-face,
+ .back-face {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    position: absolute;
+    border-radius: 5px;
+    background: linear-gradient(90deg, rgb(28, 31, 36) 0%, hsla(225, 62%, 60%, 1) 100%);
+    /* by-default there is a backside, so we have to hide the visiblity */
+    backface-visibility: hidden;
+ }
+ .front-face { 
+    transform: rotateY(180deg);
+ }
+ /* Now,styling memory game container---> our board. */
